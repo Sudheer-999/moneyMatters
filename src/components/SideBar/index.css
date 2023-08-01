@@ -1,0 +1,94 @@
+.sidebar-container {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  border-right: 1px solid #e2e2e2;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  width: 200px;
+  padding-top: 31px;
+  padding-left: 20px;
+  padding-right: 21px;
+}
+
+.trans-icon {
+  width: 18px;
+}
+
+.nav-options {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  margin-top: 49px;
+}
+
+.nav-option {
+  padding: 0px 18px;
+  padding-left: 44px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  cursor: pointer;
+}
+
+.option-text {
+  padding-left: 26px;
+  font-size: 18px;
+  font-family: Inter;
+  font-weight: 500;
+}
+
+.profile-pic {
+  width: 40px;
+  margin-right: 8px;
+}
+
+.sidebar-bottom {
+  display: flex;
+  padding: 24px 0px 32px 24px;
+  align-items: center;
+  font-family: Inter;
+  border-top: 1px solid #eaecf0;
+}
+
+.sidebar-logout {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-sub {
+  display: flex;
+}
+
+.logout-icon {
+  font-size: 20px;
+  color: #718ebf;
+  cursor: pointer;
+}
+
+.email {
+  font-size: 14px;
+  color: #718ebf;
+}
+
+.name {
+  font-size: 14px;
+  color: #505887;
+}
+
+.inactive {
+  color: #505887;
+}
+
+.active {
+  border-left: 6px solid #2d60ff;
+  padding-left: 38px;
+  border-radius: 0px 10px 10px 0px;
+  color: #2d60ff;
+}

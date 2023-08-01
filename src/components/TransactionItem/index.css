@@ -1,0 +1,28 @@
+.transaction-item {
+  height: 60px;
+  background-color: #fff;
+}
+
+.line {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.transaction-title {
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 30px;
+  margin-right: 16px;
+}
+
+.currency {
+  font-weight: 500;
+}
+
+.icons-con {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

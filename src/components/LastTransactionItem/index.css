@@ -1,0 +1,82 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 58px;
+  border-bottom: 1px solid #e2e2e2;
+  flex-shrink: 0;
+}
+
+.t-name {
+  color: #505887;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.trans-name {
+  display: flex;
+  align-items: center;
+  width: 25%;
+}
+
+.down-arrow-icon {
+  font-size: 25px;
+  margin-right: 16px;
+  color: #fe5c73;
+}
+
+.up-arrow-icon {
+  font-size: 25px;
+  margin-right: 16px;
+  color: #16dbaa;
+}
+
+.trans-end {
+  display: flex;
+}
+
+.pencil-icon {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.del-icon {
+  cursor: pointer;
+}
+
+.t-category {
+  color: #718ebf;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 150px;
+}
+
+.t-amount {
+  color: #fe5c73;
+  text-align: right;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.trans-middle {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+.green {
+  color: #16dbaa;
+}
+
+.red {
+  color: #fe5c73;
+}

@@ -1,0 +1,34 @@
+.all-transactions-body {
+  margin-left: 250px;
+  min-height: 100vh;
+  height: 100%;
+  background: #f5f7fa;
+  padding: 32px 40px;
+}
+
+.table-container {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 16px 30px;
+  border-spacing: 0;
+  color: #505887;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.thead-row {
+  height: 40px;
+  color: #343c6a;
+  font-weight: 500;
+}
+
+.loader {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

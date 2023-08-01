@@ -1,0 +1,12 @@
+.last-transactions-card {
+  background-color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  margin-top: 16px;
+}
+
+.recent-transactions {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+}

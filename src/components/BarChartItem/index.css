@@ -1,0 +1,22 @@
+.barchart-background {
+  background-color: #fff;
+  border-radius: 25px;
+  margin-top: 16px;
+  position: relative;
+}
+
+.chart-info {
+  position: absolute;
+  top: 20px;
+  left: 38px;
+  color: #718ebf;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.week-amount {
+  color: #333b69;
+}

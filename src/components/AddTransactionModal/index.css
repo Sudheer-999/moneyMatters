@@ -1,0 +1,122 @@
+.custom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(52, 64, 84, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-modal-content {
+  background-color: #fff;
+  top: 25%;
+  left: 30%;
+  right: auto;
+  bottom: auto;
+  margin-right: -35%;
+  width: 26%;
+  border-radius: 16px;
+  transform: translate(-48%, -10%);
+  padding: 32px 24px;
+  margin-top: 10%;
+}
+
+.close-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px 8px;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.close-icon {
+  font-size: 24px;
+  color: #718ebf;
+}
+
+.add-head {
+  color: #333b69;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  margin-bottom: 8px;
+}
+
+.add-description {
+  color: #505887;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.add-fields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-field {
+  border-radius: 15px;
+  border: 1px solid #dfeaf2;
+  background: #fff;
+  padding: 14px 20px;
+  outline: none;
+  font-size: 15px;
+  color: #718ebf;
+  margin-bottom: 24px;
+}
+
+.add-label {
+  margin-bottom: 11px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+}
+
+.add-dropdown {
+  appearance: none;
+  border-radius: 15px;
+  border: 1px solid #dfeaf2 !important;
+  background: #fff;
+  outline: none;
+  font-size: 15px;
+  color: #718ebf;
+  padding: 13px 20px;
+  margin-bottom: 24px;
+}
+
+.add-trans-button {
+  padding: 8px 16px;
+  background-color: #2d60ff;
+  border-radius: 8px;
+  font-family: Inter;
+  font-size: 14px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.custom-datepicker {
+  width: 96%;
+  border-radius: 15px;
+  border: 1px solid #dfeaf2;
+  background: #fff;
+  padding: 14px 20px;
+  padding-right: 0px;
+  outline: none;
+  font-size: 15px;
+  color: #718ebf;
+  margin-bottom: 24px;
+  display: block !important;
+}

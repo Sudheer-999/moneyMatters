@@ -1,0 +1,90 @@
+.main-body-container {
+  background-color: #f5f7fa;
+  height: 100vh;
+  margin-left: 250px;
+  padding: 24px 40px;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.credit-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  height: 168px;
+  width: 49%;
+  border-radius: 25px;
+}
+
+.card1 {
+  margin-right: 24px;
+}
+
+.credit-image {
+  width: 182px;
+  height: 161px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.debit-image {
+  width: 187px;
+  height: 154px;
+}
+
+.credit-details {
+  align-self: flex-start;
+  padding: 25px 36px;
+}
+
+.amount {
+  color: #16dbaa;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.debit-amnt {
+  color: #fe5c73;
+  font-size: 25px;
+}
+
+.credit-text {
+  color: #718ebf;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 7px;
+}
+
+.middle-section {
+  margin-top: 24px;
+}
+
+.side-head {
+  color: #333b69;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.debit-sidehead {
+  margin-top: 16px;
+}
+
+.loader {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

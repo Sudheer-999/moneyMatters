@@ -1,0 +1,78 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #d7dae4;
+}
+
+.login-card {
+  width: 500px;
+
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px 70px 30px;
+  font-family: Inter;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.login-logo {
+  width: 300px;
+  padding: 20px;
+  align-self: center;
+}
+
+.login-head {
+  font-family: Inter;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #02969c;
+}
+
+label {
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.email-input {
+  height: 30px;
+  font-size: 18px;
+  padding: 5px;
+
+  margin-bottom: 10px;
+  border: 1px solid #063131;
+  border-radius: 4px;
+  outline-color: #02969c;
+}
+
+.aster {
+  color: red;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.login-button {
+  border: none;
+  height: 30px;
+  width: 100px;
+  background-color: #02969c;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.err {
+  font-size: 12px;
+  color: red;
+  font-weight: 500;
+}

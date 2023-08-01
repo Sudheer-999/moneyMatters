@@ -1,0 +1,80 @@
+.nav-container {
+  padding: 24px 40px;
+  background-color: #fff;
+
+  margin-left: 250px;
+  height: 100%;
+}
+
+* {
+  margin: 0px;
+}
+
+.nav-head {
+  font-family: Inter;
+  color: #343c6a;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.nav-button {
+  border-radius: 12px;
+  background: #2d60ff;
+  padding: 8px 12px;
+  border: none;
+  font-family: Inter;
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.plus-button {
+  font-size: 20px;
+  margin-right: 4px;
+}
+
+.normal-navs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-navs {
+  display: flex;
+  margin-top: 17px;
+  color: #718ebf;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.t-nav {
+  padding-bottom: 8px;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.pad-bottom {
+  padding-bottom: 0px;
+}
+
+.active-tab {
+  color: #2d60ff;
+  border-bottom: 4px solid #2d60ff;
+  border-radius: 2px;
+}
