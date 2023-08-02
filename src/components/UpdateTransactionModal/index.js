@@ -121,8 +121,8 @@ const UpdateTransactionModal = ({
                 value={updateType}
                 onChange={(e) => setUpdateType(e.target.value)}
               >
-                <option>Credit</option>
-                <option>Debit</option>
+                <option>credit</option>
+                <option>debit</option>
               </select>
 
               <label className="add-label" htmlFor="trans-category">
