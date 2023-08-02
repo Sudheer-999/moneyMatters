@@ -5,6 +5,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddTransactionModal = ({ isOpen, onRequestClose }) => {
   const loginId = Cookies.get("loginId");
@@ -29,7 +31,17 @@ const AddTransactionModal = ({ isOpen, onRequestClose }) => {
 
   const isoDate = formatDateToISO(addDate);
 
-  const handleInsertSuccess = () => {
+  const notify = () => {
+    toast.success("Added Successfully", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     onRequestClose();
   };
 
@@ -54,15 +66,13 @@ const AddTransactionModal = ({ isOpen, onRequestClose }) => {
       "x-hasura-user-id": loginId,
     };
 
-    const response = await axios.post(url, body, { headers });
+    try {
+      const response = await axios.post(url, body, { headers });
 
-    const responseData = await response.data;
-
-    if (responseData.insert_transactions_one === null) {
-      console.log("Update successful, but the record was not found.");
-    } else {
-      console.log("Update successful.");
-      handleInsertSuccess();
+      const responseData = await response.data;
+      console.log(responseData);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -143,7 +153,10 @@ const AddTransactionModal = ({ isOpen, onRequestClose }) => {
             />
             <button
               type="submit"
-              onClick={handleAddData}
+              onClick={() => {
+                handleAddData();
+                notify();
+              }}
               className="add-trans-button"
             >
               Add Transaction

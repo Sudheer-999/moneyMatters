@@ -1,6 +1,6 @@
 .sidebar-container {
   width: 250px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
@@ -8,6 +8,13 @@
   position: fixed;
   top: 0;
   left: 0;
+  background-color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .sidebar-container {
+    display: flex;
+  }
 }
 
 .logo {
@@ -19,6 +26,21 @@
 
 .trans-icon {
   width: 18px;
+}
+
+.back-toggle {
+  display: flex;
+  position: absolute;
+  left: 220px;
+  font-size: 25px;
+  color: #0e1320;
+  top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .back-toggle {
+    display: none;
+  }
 }
 
 .nav-options {

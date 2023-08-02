@@ -44,16 +44,17 @@ const LastTransactions = () => {
   const recentTransactions = filteredData.slice(0, 3);
 
   return (
-    <div className="last-transactions-card">
-      <ul className="recent-transactions">
-        {recentTransactions.map((transactionItem) => (
+    <table className="last-transactions-table">
+      <tbody>
+        {recentTransactions.map((transactionItem, index) => (
           <LastTransactionItem
             details={transactionItem}
             key={transactionItem.id}
+            listNum={index + 1}
           />
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   );
 };
 

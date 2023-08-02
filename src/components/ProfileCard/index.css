@@ -3,27 +3,58 @@
   height: 100px;
   border-radius: 50%;
   margin-right: 50px;
+  margin-bottom: 20px;
 }
 
 .profile-card {
   display: flex;
+  flex-direction: column;
   padding: 48px 30px;
   background-color: #fff;
   border-radius: 25px;
 }
 
+@media screen and (min-width: 768px) {
+  .profile-card {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile-image {
+    margin-bottom: 0px;
+  }
+}
+
 .details-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .details-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+
 .left-con {
-  width: 50%;
-  margin-right: 28px;
+  width: 100%;
 }
 
 .right-con {
-  width: 50%;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .left-con {
+    width: 50%;
+    margin-right: 28px;
+  }
+  .right-con {
+    width: 50%;
+  }
 }
 
 p {

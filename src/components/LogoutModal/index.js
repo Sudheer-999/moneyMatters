@@ -28,10 +28,9 @@ const LogoutModal = ({ isOpen, onRequestClose }) => {
           </div>
         </div>
         <div>
-          <h1 className="delete-head">Are you sure you want to Delete?</h1>
+          <h1 className="delete-head">Are you sure you want to Logout?</h1>
           <p className="delete-description">
-            This transaction will be deleted immediately. You can’t undo this
-            action.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
           </p>
           <div className="delete-buttons">
             <button className="del delete-confirm" onClick={onLogoutButton}>

@@ -1,6 +1,13 @@
 .profile-body {
-  margin-left: 250px;
+  margin-left: 0px;
   background: #f5f7fa;
   height: 100vh;
-  padding: 20px 40px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .profile-body {
+    margin-left: 250px;
+    padding: 20px 40px;
+  }
 }

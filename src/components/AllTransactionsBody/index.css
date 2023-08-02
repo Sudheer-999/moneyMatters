@@ -1,23 +1,37 @@
 .all-transactions-body {
-  margin-left: 250px;
+  margin-left: 0px;
   min-height: 100vh;
   height: 100%;
   background: #f5f7fa;
-  padding: 32px 40px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .all-transactions-body {
+    margin-left: 250px;
+    padding: 32px 40px;
+  }
 }
 
 .table-container {
   width: 100%;
   background-color: #fff;
   border-radius: 25px;
-  padding: 16px 30px;
+  padding: 12px 20px;
   border-spacing: 0;
   color: #505887;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (min-width: 768px) {
+  .table-container {
+    font-size: 16px;
+    padding: 16px 30px;
+  }
 }
 
 .thead-row {
@@ -31,4 +45,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
 }

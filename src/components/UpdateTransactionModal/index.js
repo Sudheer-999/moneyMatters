@@ -6,6 +6,9 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import Cookies from "js-cookie";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 const UpdateTransactionModal = ({
@@ -13,8 +16,6 @@ const UpdateTransactionModal = ({
   onRequestUpdateClose,
   singleItem,
 }) => {
-  console.log(singleItem);
-
   const loginId = Cookies.get("loginId");
 
   const { amount, transaction_name, type, category, date, id } = singleItem;
@@ -39,7 +40,17 @@ const UpdateTransactionModal = ({
 
   const isoDate = formatDateToISO(updateDate);
 
-  const handleUpdateSuccess = () => {
+  const notify = () => {
+    toast.success("Updated Successfully", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     onRequestUpdateClose();
   };
 
@@ -72,98 +83,102 @@ const UpdateTransactionModal = ({
       console.log("Update successful, but the record was not found.");
     } else {
       console.log("Update successful.");
-      handleUpdateSuccess();
     }
   };
 
   return (
-    <Modal
-      isOpen={isUpdateOpen}
-      onRequestClose={onRequestUpdateClose}
-      overlayClassName="custom-overlay"
-      shouldCloseOnOverlayClick={false}
-      className="add-modal-content"
-    >
-      <div className="">
-        <div>
-          <h1 className="add-head">Update Transaction</h1>
-          <p className="add-description">
-            You can update your transaction here
-          </p>
-          <div className="add-fields">
-            <label className="add-label" htmlFor="trans-name">
-              Transaction Name
-            </label>
-            <input
-              type="text"
-              id="trans-name"
-              className="input-field"
-              value={updateTransName}
-              onChange={(e) => setUpdateTransName(e.target.value)}
-            />
+    <div>
+      <Modal
+        isOpen={isUpdateOpen}
+        onRequestClose={onRequestUpdateClose}
+        overlayClassName="custom-overlay"
+        shouldCloseOnOverlayClick={false}
+        className="add-modal-content"
+      >
+        <div className="">
+          <div>
+            <h1 className="add-head">Update Transaction</h1>
+            <p className="add-description">
+              You can update your transaction here
+            </p>
+            <div className="add-fields">
+              <label className="add-label" htmlFor="trans-name">
+                Transaction Name
+              </label>
+              <input
+                type="text"
+                id="trans-name"
+                className="input-field"
+                value={updateTransName}
+                onChange={(e) => setUpdateTransName(e.target.value)}
+              />
 
-            <label className="add-label" htmlFor="trans-name">
-              Transaction Type
-            </label>
-            <select
-              className="add-dropdown"
-              value={updateType}
-              onChange={(e) => setUpdateType(e.target.value)}
-            >
-              <option>Credit</option>
-              <option>Debit</option>
-            </select>
+              <label className="add-label" htmlFor="trans-name">
+                Transaction Type
+              </label>
+              <select
+                className="add-dropdown"
+                value={updateType}
+                onChange={(e) => setUpdateType(e.target.value)}
+              >
+                <option>Credit</option>
+                <option>Debit</option>
+              </select>
 
-            <label className="add-label" htmlFor="trans-category">
-              Category
-            </label>
-            <select
-              htmlFor="trans-category"
-              value={updateCategory}
-              className="add-dropdown"
-              onChange={(e) => setUpdateCategory(e.target.value)}
-            >
-              <option>Entertainment</option>
-              <option>Food</option>
-              <option>Shopping</option>
-              <option>Travel</option>
-            </select>
+              <label className="add-label" htmlFor="trans-category">
+                Category
+              </label>
+              <select
+                htmlFor="trans-category"
+                value={updateCategory}
+                className="add-dropdown"
+                onChange={(e) => setUpdateCategory(e.target.value)}
+              >
+                <option>Entertainment</option>
+                <option>Food</option>
+                <option>Shopping</option>
+                <option>Travel</option>
+              </select>
 
-            <label className="add-label" htmlFor="trans-amount">
-              Amount
-            </label>
-            <input
-              type="number"
-              id="trans-amount"
-              className="input-field"
-              value={updateAmount}
-              onChange={(e) => setUpdateAmount(e.target.value)}
-            />
+              <label className="add-label" htmlFor="trans-amount">
+                Amount
+              </label>
+              <input
+                type="number"
+                id="trans-amount"
+                className="input-field"
+                value={updateAmount}
+                onChange={(e) => setUpdateAmount(e.target.value)}
+              />
 
-            <label className="add-label" htmlFor="trans-name">
-              Date
-            </label>
+              <label className="add-label" htmlFor="trans-name">
+                Date
+              </label>
 
-            <DatePicker
-              selected={parsedDate}
-              onChange={(date) => setUpdateDate(date)}
-              className="custom-datepicker"
-            />
+              <DatePicker
+                selected={parsedDate}
+                onChange={(date) => setUpdateDate(date)}
+                className="custom-datepicker"
+              />
 
-            <button
-              type="button"
-              onClick={handleUpdate}
-              className="add-trans-button"
-            >
-              Add Transaction
-            </button>
+              <button
+                type="button"
+                onClick={() => {
+                  handleUpdate();
+                  notify();
+                }}
+                className="add-trans-button"
+              >
+                Add Transaction
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <button onClick={onRequestUpdateClose} className="close-button">
-        <MdClose className="close-icon" />
-      </button>
-    </Modal>
+        <button onClick={onRequestUpdateClose} className="close-button">
+          <MdClose className="close-icon" />
+        </button>
+      </Modal>
+    </div>
   );
 };
 

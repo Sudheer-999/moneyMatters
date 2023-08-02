@@ -13,8 +13,23 @@
 }
 
 .arrow {
-  font-size: 30px;
-  margin-right: 16px;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.trans-name {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .arrow {
+    font-size: 30px;
+    margin-right: 16px;
+  }
+
+  .trans-name {
+    font-size: 15px;
+  }
 }
 
 .currency {
@@ -25,4 +40,36 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.hide-option {
+  display: none;
+}
+
+.show-option {
+  display: flex;
+}
+
+.show-image {
+  display: block;
+}
+
+.hide-image {
+  display: none;
+}
+
+.person-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.image-block {
+  margin-right: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .image-block {
+    margin-right: 8px;
+  }
 }

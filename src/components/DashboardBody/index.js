@@ -1,5 +1,5 @@
 import "./index.css";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import LastTransactions from "../LastTransactions";
@@ -15,52 +15,76 @@ const DashboardBody = () => {
 
   const [debitTotal, setDebitTotal] = useState(0);
 
-  const getTotalCredits = useCallback(async () => {
-    setIsLoading(true);
-    const url =
-      "https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals";
+  useEffect(() => {
+    const getTotalCredits = async () => {
+      setIsLoading(true);
+      const url =
+        loginId === "3"
+          ? "https://bursting-gelding-24.hasura.app/api/rest/transaction-totals-admin"
+          : "https://bursting-gelding-24.hasura.app/api/rest/credit-debit-totals";
 
-    const headers = {
-      "content-type": "application/json",
-      "x-hasura-admin-secret":
-        "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
-      "x-hasura-role": "user",
-      "x-hasura-user-id": loginId,
+      const userHeaders = {
+        "content-type": "application/json",
+        "x-hasura-admin-secret":
+          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+        "x-hasura-role": "user",
+        "x-hasura-user-id": loginId,
+      };
+
+      const adminHeaders = {
+        "content-type": "application/json",
+        "x-hasura-admin-secret":
+          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+        "x-hasura-role": "admin",
+      };
+
+      let headers = loginId === "3" ? adminHeaders : userHeaders;
+
+      try {
+        const response = await axios.get(url, {
+          headers: headers,
+        });
+
+        const responseData = await response.data;
+
+        let creditDebitTotals;
+
+        if (loginId === "3") {
+          const { transaction_totals_admin } = responseData;
+          creditDebitTotals = transaction_totals_admin;
+        } else {
+          const { totals_credit_debit_transactions } = responseData;
+          creditDebitTotals = totals_credit_debit_transactions;
+        }
+
+        if (creditDebitTotals.length !== 0) {
+          const totalCreditItem = creditDebitTotals.filter(
+            (eachItem) => eachItem.type === "credit"
+          );
+
+          if (totalCreditItem.length !== 0) {
+            const totalCredit = totalCreditItem[0].sum;
+            setCreditTotal(totalCredit);
+          }
+
+          const totalDebitItem = creditDebitTotals.filter(
+            (eachItem) => eachItem.type === "debit"
+          );
+
+          if (totalDebitItem.length !== 0) {
+            const totalDebit = totalDebitItem[0].sum;
+            setDebitTotal(totalDebit);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    const response = await axios.get(url, {
-      headers: headers,
-    });
-
-    const responseData = await response.data;
-
-    const { totals_credit_debit_transactions } = responseData;
-
-    if (totals_credit_debit_transactions.length !== 0) {
-      const totalCreditItem = totals_credit_debit_transactions.filter(
-        (eachItem) => eachItem.type === "credit"
-      );
-
-      if (totalCreditItem !== undefined) {
-        const totalCredit = totalCreditItem[0].sum;
-        setCreditTotal(totalCredit);
-      }
-
-      const totalDebitItem = totals_credit_debit_transactions.filter(
-        (eachItem) => eachItem.type === "debit"
-      );
-
-      if (totalDebitItem !== undefined) {
-        const totalDebit = totalDebitItem[0].sum;
-        setDebitTotal(totalDebit);
-      }
-      setIsLoading(false);
-    }
-  }, [loginId]);
-
-  useEffect(() => {
     getTotalCredits();
-  }, [getTotalCredits]);
+  }, [loginId]);
 
   return (
     <div className="main-body-container">

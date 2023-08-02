@@ -50,9 +50,18 @@ const BarChartItem = () => {
 
   const getWeekTransactions = useCallback(async () => {
     const url =
-      "https://bursting-gelding-24.hasura.app/api/rest/daywise-totals-7-days";
+      loginId === "3"
+        ? "https://bursting-gelding-24.hasura.app/api/rest/daywise-totals-last-7-days-admin"
+        : "https://bursting-gelding-24.hasura.app/api/rest/daywise-totals-7-days";
 
-    const headers = {
+    const adminHeaders = {
+      "content-type": "application/json",
+      "x-hasura-admin-secret":
+        "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+      "x-hasura-role": "admin",
+    };
+
+    const userHeaders = {
       "content-type": "application/json",
       "x-hasura-admin-secret":
         "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
@@ -60,46 +69,72 @@ const BarChartItem = () => {
       "x-hasura-user-id": loginId,
     };
 
-    const response = await axios.get(url, {
-      headers: headers,
-    });
+    let headers = loginId === "3" ? adminHeaders : userHeaders;
 
-    const responseData = await response.data;
-    const { last_7_days_transactions_credit_debit_totals } = responseData;
+    try {
+      const response = await axios.get(url, {
+        headers: headers,
+      });
 
-    setWeekTransactions(last_7_days_transactions_credit_debit_totals);
+      const responseData = await response.data;
+
+      let oneWeekTransactions;
+
+      if (loginId === "3") {
+        const { last_7_days_transactions_totals_admin } = responseData;
+        oneWeekTransactions = last_7_days_transactions_totals_admin;
+      } else {
+        const { last_7_days_transactions_credit_debit_totals } = responseData;
+        oneWeekTransactions = last_7_days_transactions_credit_debit_totals;
+      }
+
+      setWeekTransactions(oneWeekTransactions);
+    } catch (error) {
+      console.log(error);
+    }
   }, [loginId]);
 
   useEffect(() => {
     getWeekTransactions();
   }, [getWeekTransactions]);
 
-  const groupedData = weekTransactions.reduce((acc, entry) => {
-    const date = new Date(entry.date).toISOString().substring(0, 10); // Extract the date without the time
-    if (!acc[date]) {
-      acc[date] = { date, debitSum: 0, creditSum: 0 };
-    }
-    if (entry.type === "debit") {
-      acc[date].debitSum += entry.sum;
-    } else if (entry.type === "credit") {
-      acc[date].creditSum += entry.sum;
-    }
-    return acc;
-  }, {});
+  const processChartData = () => {
+    const groupedData = weekTransactions.reduce((acc, entry) => {
+      const date = new Date(entry.date).toISOString().substring(0, 10);
+      if (!acc[date]) {
+        acc[date] = { date, debitSum: 0, creditSum: 0 };
+      }
+      if (entry.type.toLowerCase() === "debit") {
+        acc[date].debitSum += entry.sum;
+      } else if (entry.type.toLowerCase() === "credit") {
+        acc[date].creditSum += entry.sum;
+      }
+      return acc;
+    }, {});
 
-  const totalDebitItem = weekTransactions.filter(
-    (eachItem) => eachItem.type === "debit"
-  );
+    const sortedData = Object.values(groupedData).sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+    const processedData = sortedData.slice(-7);
 
-  const totalCreditItem = weekTransactions.filter(
-    (eachItem) => eachItem.type === "credit"
-  );
+    return processedData;
+  };
+
+  const processedData = processChartData();
+
+  const totalDebitItem = processedData.map((entry) => ({
+    type: "debit",
+    sum: entry.debitSum,
+  }));
+
+  const totalCreditItem = processedData.map((entry) => ({
+    type: "credit",
+    sum: entry.creditSum,
+  }));
 
   const totalDebit = totalDebitItem.reduce((acc, obj) => acc + obj.sum, 0);
 
   const totalCredit = totalCreditItem.reduce((acc, obj) => acc + obj.sum, 0);
-
-  const processedData = Object.values(groupedData);
 
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 

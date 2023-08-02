@@ -1,41 +1,57 @@
 .list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 58px;
-  border-bottom: 1px solid #e2e2e2;
-  flex-shrink: 0;
 }
 
 .t-name {
   color: #505887;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
+@media screen and (min-width: 768px) {
+  .t-name {
+    font-size: 16px;
+  }
+}
+
 .trans-name {
   display: flex;
   align-items: center;
-  width: 25%;
 }
 
 .down-arrow-icon {
-  font-size: 25px;
-  margin-right: 16px;
+  font-size: 20px;
+  margin-right: 8px;
   color: #fe5c73;
 }
 
+@media screen and (min-width: 768px) {
+  .down-arrow-icon {
+    font-size: 30px;
+    margin-right: 16px;
+  }
+}
+
 .up-arrow-icon {
-  font-size: 25px;
-  margin-right: 16px;
+  font-size: 20px;
+  margin-right: 8px;
   color: #16dbaa;
+}
+
+@media screen and (min-width: 768px) {
+  .up-arrow-icon {
+    font-size: 30px;
+    margin-right: 16px;
+  }
 }
 
 .trans-end {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .pencil-icon {
@@ -50,27 +66,31 @@
 .t-category {
   color: #718ebf;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 150px;
+}
+
+@media screen and (min-width: 768px) {
+  .t-category {
+    font-size: 16px;
+  }
 }
 
 .t-amount {
   color: #fe5c73;
-  text-align: right;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 }
 
-.trans-middle {
-  display: flex;
-  justify-content: space-between;
-  width: 40%;
+@media screen and (min-width: 768px) {
+  .t-amount {
+    font-size: 16px;
+  }
 }
 
 .green {
@@ -79,4 +99,15 @@
 
 .red {
   color: #fe5c73;
+}
+
+.pull {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.person-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }

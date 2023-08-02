@@ -8,8 +8,7 @@
 }
 
 .login-card {
-  width: 500px;
-
+  width: 70%;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -19,10 +18,22 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+@media screen and (min-width: 768px) {
+  .login-card {
+    width: 500px;
+  }
+}
+
 .login-logo {
-  width: 300px;
+  width: 200px;
   padding: 20px;
   align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+  .login-logo {
+    width: 300px;
+  }
 }
 
 .login-head {

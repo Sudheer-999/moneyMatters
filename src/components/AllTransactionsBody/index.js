@@ -13,6 +13,8 @@ const AllTransactionsBody = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const [fakeImages, setFakeImages] = useState([]);
+
   const loginId = Cookies.get("loginId");
 
   useEffect(() => {
@@ -26,7 +28,7 @@ const AllTransactionsBody = () => {
         offset: 0,
       };
 
-      const headers = {
+      const userHeaders = {
         "content-type": "application/json",
         "x-hasura-admin-secret":
           "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
@@ -34,21 +36,52 @@ const AllTransactionsBody = () => {
         "x-hasura-user-id": loginId,
       };
 
-      const response = await axios.get(url, {
-        headers: headers,
-        params: params,
-      });
+      const adminHeaders = {
+        "content-type": "application/json",
+        "x-hasura-admin-secret":
+          "g08A3qQy00y8yFDq3y6N1ZQnhOPOa4msdie5EtKS1hFStar01JzPKrtKEzYY2BtF",
+        "x-hasura-role": "admin",
+      };
 
-      const responseData = await response.data;
+      let headers = loginId === "3" ? adminHeaders : userHeaders;
 
-      const { transactions } = responseData;
-      setIsLoading(false);
+      try {
+        const response = await axios.get(url, {
+          headers: headers,
+          params: params,
+        });
 
-      setAllTransactions(transactions);
+        const responseData = await response.data;
+
+        const { transactions } = responseData;
+
+        setAllTransactions(transactions);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     getAllTransactions();
   }, [loginId]);
+
+  useEffect(() => {
+    const getFakeData = async () => {
+      const fakeImageUrl =
+        "https://mockapi.io/projects/64bcc2ab7b33a35a44474f0b";
+
+      try {
+        const fakeImageResponse = await axios.get(fakeImageUrl);
+
+        const fakeImageData = await fakeImageResponse.data;
+        setFakeImages(fakeImageData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getFakeData();
+  }, []);
 
   const debitTransactions = allTransactions.filter(
     (eachItem) => eachItem.type === "debit"
@@ -56,8 +89,6 @@ const AllTransactionsBody = () => {
   const creditTransactions = allTransactions.filter(
     (eachItem) => eachItem.type === "credit"
   );
-
-  console.log(activeTransactions);
 
   let transactionItems;
 
@@ -72,6 +103,10 @@ const AllTransactionsBody = () => {
       transactionItems = allTransactions;
       break;
   }
+
+  const pullRight = loginId === "3" ? "pull" : "";
+
+  console.log(fakeImages);
 
   return (
     <div className="all-transactions-body">
@@ -94,15 +129,18 @@ const AllTransactionsBody = () => {
               <td className="line">Transaction Name</td>
               <td className="line">Category</td>
               <td className="line">Date</td>
-              <td className="line">Amount</td>
+              <td className="line">
+                <div className={pullRight}>Amount</div>
+              </td>
               <td className="line"></td>
             </tr>
           </thead>
           <tbody>
-            {transactionItems.map((eachItem) => (
+            {transactionItems.map((eachItem, index) => (
               <TransactionItem
                 key={eachItem.id}
                 transactionDetails={eachItem}
+                itemNumber={index + 1}
               />
             ))}
           </tbody>

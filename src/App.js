@@ -10,6 +10,7 @@ import { useState } from "react";
 function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [activeTransactions, setActiveTransactions] = useState("all");
+
   return (
     <BrowserRouter>
       <AppContext.Provider

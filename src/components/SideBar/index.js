@@ -63,6 +63,7 @@ const SideBar = () => {
           alt="logo"
           className="logo"
         />
+
         <ul className="nav-options">
           <li
             className={`nav-option ${

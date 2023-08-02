@@ -3,11 +3,16 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useContext, useState } from "react";
 import AppContext from "../AppContext";
 import AddTransactionModal from "../AddTransactionModal";
+import Cookies from "js-cookie";
 
 const NavBar = () => {
   const { activeTab, setActiveTransactions, activeTransactions } = useContext(
     AppContext
   );
+
+  const loginId = Cookies.get("loginId");
+
+  const displayAddTransBtn = loginId === "3" ? "hide" : "display";
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -45,7 +50,10 @@ const NavBar = () => {
       <div className={`nav-container ${padBottom}`}>
         <div className="normal-navs">
           <p className="nav-head">{navHead}</p>
-          <button className="nav-button" onClick={openModal}>
+          <button
+            className={`nav-add-button ${displayAddTransBtn}`}
+            onClick={openModal}
+          >
             <AiOutlinePlus className="plus-button" /> Add Transaction
           </button>
         </div>

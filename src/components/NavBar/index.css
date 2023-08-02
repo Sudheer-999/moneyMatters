@@ -2,8 +2,14 @@
   padding: 24px 40px;
   background-color: #fff;
 
-  margin-left: 250px;
+  margin-left: 0px;
   height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-container {
+    margin-left: 250px;
+  }
 }
 
 * {
@@ -13,17 +19,23 @@
 .nav-head {
   font-family: Inter;
   color: #343c6a;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 600;
 }
 
-.nav-button {
+@media screen and (min-width: 768px) {
+  .nav-head {
+    font-size: 28px;
+  }
+}
+
+.nav-add-button {
   border-radius: 12px;
   background: #2d60ff;
-  padding: 8px 12px;
+  padding: 6px 8px;
   border: none;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 10px;
   color: #fff;
   text-align: center;
   display: flex;
@@ -33,8 +45,19 @@
 }
 
 .plus-button {
-  font-size: 20px;
+  font-size: 14px;
   margin-right: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-add-button {
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+
+  .plus-button {
+    font-size: 20px;
+  }
 }
 
 .normal-navs {
@@ -49,10 +72,16 @@
   color: #718ebf;
   text-align: center;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+@media screen and (min-width: 768px) {
+  .transaction-navs {
+    font-size: 16px;
+  }
 }
 
 .t-nav {
@@ -69,6 +98,10 @@
   display: none;
 }
 
+.display {
+  display: flex;
+}
+
 .pad-bottom {
   padding-bottom: 0px;
 }
@@ -77,4 +110,16 @@
   color: #2d60ff;
   border-bottom: 4px solid #2d60ff;
   border-radius: 2px;
+}
+
+.side-toggle {
+  display: flex;
+  font-size: 20px;
+  color: #2d60ff;
+}
+
+@media screen and (min-width: 768px) {
+  .side-toggle {
+    display: none;
+  }
 }

@@ -1,13 +1,21 @@
 .main-body-container {
   background-color: #f5f7fa;
-  height: 100vh;
-  margin-left: 250px;
-  padding: 24px 40px;
+  min-height: 100vh;
+  height: 100%;
+  margin-left: 0px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-body-container {
+    margin-left: 250px;
+    padding: 24px 40px;
+  }
 }
 
 .top-section {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .credit-card {
@@ -15,25 +23,55 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  height: 168px;
-  width: 49%;
+  height: 125px;
+  width: 100%;
   border-radius: 25px;
 }
 
 .card1 {
   margin-right: 24px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .credit-card {
+    width: 49%;
+    height: 168px;
+  }
+
+  .top-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .card1 {
+    margin-bottom: 0px;
+  }
 }
 
 .credit-image {
-  width: 182px;
-  height: 161px;
+  width: 122px;
+  height: 100px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 }
 
 .debit-image {
-  width: 187px;
-  height: 154px;
+  width: 130px;
+  height: 100px;
+}
+
+@media screen and (min-width: 768px) {
+  .credit-image {
+    width: 182px;
+    height: 161px;
+  }
+
+  .debit-image {
+    width: 187px;
+    height: 154px;
+  }
 }
 
 .credit-details {
@@ -44,15 +82,27 @@
 .amount {
   color: #16dbaa;
   font-family: Inter;
-  font-size: 32px;
+  font-size: 22px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 }
 
+@media screen and (min-width: 768px) {
+  .amount {
+    font-size: 32px;
+  }
+}
+
 .debit-amnt {
   color: #fe5c73;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .debit-amnt {
+    font-size: 25px;
+  }
 }
 
 .credit-text {
