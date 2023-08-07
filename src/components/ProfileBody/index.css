@@ -1,7 +1,8 @@
 .profile-body {
   margin-left: 0px;
   background: #f5f7fa;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   padding: 20px;
 }
 
